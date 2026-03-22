@@ -1,0 +1,29 @@
+.advantages { padding: 112px 60px; }
+.advTop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; margin-bottom: 48px; }
+.advNumCard {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 28px 24px; text-align: center;
+}
+.advNumber { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.03em; color: var(--accent-mid); line-height: 1; margin-bottom: 8px; }
+.advLabel { font-size: 0.8rem; font-weight: 500; color: var(--body); line-height: 1.45; }
+.reviewsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.reviewCard { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 30px; }
+.reviewStars { display: flex; gap: 3px; margin-bottom: 14px; }
+.reviewStars span { font-size: 0.85rem; color: #f5a623; }
+.reviewText { font-size: 0.87rem; line-height: 1.75; color: var(--body); margin-bottom: 22px; font-style: italic; }
+.reviewAuthor { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--border); }
+.reviewAva {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; color: var(--accent-mid); flex-shrink: 0;
+}
+.reviewName { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.reviewRole { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+
+@media (max-width: 1024px) {
+  .advTop { grid-template-columns: repeat(2, 1fr); }
+  .reviewsGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .advTop { grid-template-columns: 1fr 1fr; }
+}

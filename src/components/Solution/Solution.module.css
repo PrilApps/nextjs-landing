@@ -1,0 +1,35 @@
+.solution { padding: 112px 60px; }
+.solutionInner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; max-width: 1160px; margin: 0 auto; }
+.checkList { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-top: 32px; }
+.checkList li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.9rem; font-weight: 500; color: var(--ink); line-height: 1.5;
+}
+.checkList li::before {
+  content: ''; flex-shrink: 0; margin-top: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green-light);
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%2317b87a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+.solutionCard {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 36px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.solFeat {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.solFeat:last-child { border-bottom: none; padding-bottom: 0; }
+.solFeatIco {
+  width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
+  background: var(--accent-light); border: 1px solid rgba(0,64,221,0.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.solFeatTitle { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+.solFeatDesc { font-size: 0.8rem; line-height: 1.6; color: var(--body); }
+
+@media (max-width: 1024px) {
+  .solutionInner { grid-template-columns: 1fr; gap: 36px; }
+}

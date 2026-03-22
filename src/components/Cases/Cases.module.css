@@ -1,0 +1,45 @@
+.cases { padding: 112px 60px; background: var(--bg); }
+.casesGrid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; margin-top: 48px; }
+.caseCard {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.caseCard:hover { border-color: rgba(0,64,221,0.22); box-shadow: 0 12px 40px rgba(0,64,221,0.07); }
+.caseThumb {
+  width: 100%; aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.caseThumb0 { background: linear-gradient(135deg, #fdf6e3 0%, #f5e6b8 100%); }
+.caseThumb1 { background: linear-gradient(135deg, #fff0e6 0%, #ffe0c2 100%); }
+.caseThumb2 { background: linear-gradient(135deg, #e8f0ff 0%, #c8dcff 100%); }
+.caseThumb3 { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); }
+.caseThumbScreen {
+  width: 58%; height: 72%; background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.9); border-radius: 10px;
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 7px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.scrLine { height: 7px; border-radius: 4px; background: rgba(0,64,221,0.1); }
+.scrLineS { width: 40%; }
+.scrLineM { width: 65%; }
+.scrLineL { width: 85%; }
+.scrAccent { height: 7px; width: 38%; border-radius: 4px; background: rgba(0,64,221,0.32); }
+.caseBody { padding: 22px 26px 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+.caseName { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.caseType { font-size: 0.75rem; font-weight: 500; color: var(--muted); letter-spacing: 0.03em; }
+.caseResult {
+  font-size: 0.78rem; font-weight: 600; color: var(--green);
+  background: var(--green-light); padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+}
+.casesRight { display: flex; flex-direction: column; gap: 16px; }
+.casesRight .caseCard .caseThumb { aspect-ratio: 16/8; }
+
+@media (max-width: 1024px) {
+  .casesGrid { grid-template-columns: 1fr; }
+  .casesRight { flex-direction: row; }
+}
+@media (max-width: 640px) {
+  .casesRight { flex-direction: column; }
+}

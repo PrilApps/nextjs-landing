@@ -1,0 +1,29 @@
+.services { padding: 112px 60px; }
+.servicesHeader { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.servicesGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.svcCard {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 36px 30px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; cursor: default;
+}
+.svcCard:hover { border-color: rgba(0,64,221,0.22); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,64,221,0.08); }
+.svcIcon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--accent-light); border: 1px solid rgba(0,64,221,0.12);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+}
+.svcName { font-size: 1rem; font-weight: 600; margin-bottom: 10px; line-height: 1.3; color: var(--ink); }
+.svcDesc { font-size: 0.83rem; line-height: 1.72; color: var(--body); margin-bottom: 20px; }
+.svcTags { display: flex; flex-wrap: wrap; gap: 6px; }
+.stag {
+  font-size: 0.69rem; font-weight: 600; letter-spacing: 0.04em;
+  background: var(--surface); color: var(--body);
+  padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  .servicesGrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .servicesGrid { grid-template-columns: 1fr; }
+}

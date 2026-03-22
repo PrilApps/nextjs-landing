@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import type { CaseStudy } from '@/data/cases';
 import styles from './CaseModal.module.css';
 
@@ -36,6 +35,17 @@ export default function CaseModal({ caseData, isOpen, onClose }: CaseModalProps)
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, handleKeyDown]);
+
+  // Load gallery images from JSON
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  useEffect(() => {
+    if (isOpen && caseData.galleryJsonPath) {
+      fetch(caseData.galleryJsonPath)
+        .then((r) => r.json())
+        .then((images: string[]) => setGalleryImages(images))
+        .catch(() => setGalleryImages([]));
+    }
+  }, [isOpen, caseData.galleryJsonPath]);
 
   // Determine hero class for gradient-based heroes
   const heroClassMap: Record<string, string> = {
@@ -135,58 +145,32 @@ export default function CaseModal({ caseData, isOpen, onClose }: CaseModalProps)
             ))}
           </div>
 
-          {/* Gallery */}
-          {caseData.gallery.length > 0 && (
-            <>
-              {caseData.gallery.map((item, i) => {
-                if (item.type === 'video') {
-                  return (
-                    <div key={i} className={styles.modalGalleryFull}>
-                      <video
-                        src={item.src}
-                        controls
-                        playsInline
-                        muted
-                        style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border)', marginTop: 16 }}
-                      />
-                    </div>
-                  );
-                }
-                if (item.full) {
-                  return (
-                    <div key={i} className={styles.modalGalleryFull}>
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        width={800}
-                        height={450}
-                        style={{ width: '100%', height: 'auto', borderRadius: 12, border: '1px solid var(--border)' }}
-                      />
-                    </div>
-                  );
-                }
-                return null;
-              })}
-
-              {/* Grid gallery for non-full images */}
-              {caseData.gallery.some((g) => g.type === 'image' && !g.full) && (
-                <div className={styles.modalGallery}>
-                  {caseData.gallery
-                    .filter((g) => g.type === 'image' && !g.full)
-                    .map((item, i) => (
-                      <Image
-                        key={i}
-                        src={item.src}
-                        alt={item.alt}
-                        width={400}
-                        height={300}
-                        style={{ width: '100%', height: 'auto' }}
-                      />
-                    ))}
-                </div>
-              )}
-            </>
+          {/* Gallery — loaded from JSON, lazy img tags */}
+          {galleryImages.length > 0 && (
+            <div className={styles.modalGallery}>
+              {galleryImages.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={caseData.id}
+                  loading="lazy"
+                />
+              ))}
+            </div>
           )}
+
+          {/* Videos */}
+          {caseData.videos?.map((src, i) => (
+            <video
+              key={i}
+              src={src}
+              controls
+              playsInline
+              muted
+              preload="metadata"
+              style={{ width: '100%', borderRadius: 12, border: '1px solid var(--border)', marginTop: 16 }}
+            />
+          ))}
 
           {/* Link to live site */}
           {caseData.link && (

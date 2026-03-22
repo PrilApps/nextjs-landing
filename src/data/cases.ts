@@ -153,7 +153,7 @@ export const cases: CaseStudy[] = [
     titleKey: 'liberandum.title',
     subtitleKey: 'liberandum.subtitle',
     tagKey: 'liberandum.tag',
-    heroImage: '/images/liberandum/1_1_1_w_cryptocurrencies_1.webp',
+    heroImage: '/images/liberandum/1_1_1_w_cryptocurrencies_max_1600.webp',
     stats: [
       { valueKey: 'liberandum.stat1Num', labelKey: 'liberandum.stat1Label' },
       { valueKey: 'liberandum.stat2Num', labelKey: 'liberandum.stat2Label' },

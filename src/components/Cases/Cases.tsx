@@ -91,7 +91,7 @@ export default function Cases() {
           <div className={styles.caseCard} onClick={() => setOpenCaseId('liberandum')}>
             <div
               className={styles.caseThumb}
-              style={{ background: "url('/images/liberandum/1_1_1_w_cryptocurrencies_1.webp') center/cover no-repeat" }}
+              style={{ background: "url('/images/liberandum/1_1_1_w_cryptocurrencies_max_1600.webp') center/cover no-repeat" }}
             />
             <div className={styles.caseBody}>
               <div>
